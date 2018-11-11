@@ -39,7 +39,7 @@ public class JTableProcesso extends JTable {
     }
 
     public void setProcessos(List<Processo> processos) {
-        Object[][] data = new Object[processos.size()][6];
+        Object[][] data = new Object[processos.size()][7];
 
         for (int i = 0; i < data.length; i++) {
             data[i][0] = "";
@@ -48,6 +48,7 @@ public class JTableProcesso extends JTable {
             data[i][3] = processos.get(i).getTempoExecucao();
             data[i][4] = processos.get(i).getPrioridade();
             data[i][5] = processos.get(i).getTempoEmEspera();
+            data[i][6] = processos.get(i).getQuantidadeMemoria();
         }
 
         this.setModel(new TableModel(data));
@@ -78,8 +79,8 @@ public class JTableProcesso extends JTable {
         private static final long serialVersionUID = -4291411585107469787L;
 
         public TableModel(Object[][] data) {
-            super(data, new String[] { "Cor", "Nome", "Entrada", "Execução",
-                    "Prioridade", "Espera" });
+            super(data, new String[] { "Cor", "Nome", "Instante de chegada", "Duração em milisegundos",
+                    "Prioridade", "Espera", "Memória"});
         }
 
         @SuppressWarnings("unchecked")
@@ -88,7 +89,8 @@ public class JTableProcesso extends JTable {
                                         java.lang.Integer.class,
                                         java.lang.Integer.class,
                                         java.lang.Integer.class,
-                                        java.lang.Integer.class };
+                                        java.lang.Integer.class,
+                                        java.lang.Integer.class};
         boolean[]       canEdit = new boolean[] { false, false, false, false,
                                         false, false };
 

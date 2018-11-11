@@ -28,23 +28,26 @@ public class CSVUtil {
     public static boolean validarCSV(File csv) throws Exception, IOException {
         BufferedReader br = new BufferedReader(new FileReader(csv));
         
-        String linha = br.readLine(); // Nome;TempoEntrada;TempoExecucao;Prioridade
-
+        String linha = br.readLine(); // Nome;TempoEntrada;TempoExecucao;Prioridade;QuantidadeMemória
+        System.out.println(linha);
         String[] conteudo = linha.split(";");
-
+        
         try {
             if (conteudo.length < 4)
                 throw new Exception("Numero de colunas invalido!");
 
-            for (int i = 0; i < conteudo.length; i++)
-                conteudo[i] = conteudo[i].trim();
-
+            for (int i = 0; i < conteudo.length; i++) {
+            	conteudo[i] = conteudo[i].trim();
+            }
+                
+            
+            
             // caso algum dos campos abaixo não seja inteiro será lancada uma
             // execução.
             Integer.valueOf(conteudo[1]);
             Integer.valueOf(conteudo[2]);
             Integer.valueOf(conteudo[3]);
-
+            
         } finally {
             br.close();
         }
@@ -78,7 +81,8 @@ public class CSVUtil {
         int tempoEntrada;
         int tempoExecucao;
         int prioridade;
-
+        int quantidadeMemoria;
+        
         int i;
 
         
@@ -93,8 +97,9 @@ public class CSVUtil {
                     tempoEntrada = Integer.valueOf(campos[1]);
                     tempoExecucao = Integer.valueOf(campos[2]);
                     prioridade = Integer.valueOf(campos[3]);
+                    quantidadeMemoria = Integer.valueOf(campos[4]);
 
-                    processo = new Processo(campos[0], tempoExecucao, prioridade, tempoEntrada);
+                    processo = new Processo(campos[0], tempoExecucao, prioridade, tempoEntrada, quantidadeMemoria);
                     processos.add(processo);
 
                 }

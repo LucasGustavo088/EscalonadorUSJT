@@ -167,12 +167,13 @@ public abstract class Window extends JFrame {
         cmbAlgoritmos.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
                 cmbAlgoritmosActionPerformed(arg0);
+                System.out.println(arg0);
             }
         });
         cmbAlgoritmos.setModel(new DefaultComboBoxModel<String>(new String[] {"SJF"}));
 
         chPreemptivo = new JCheckBox("Preemptivo");
-        chPreemptivo.setEnabled(false);
+        chPreemptivo.setEnabled(true);
 
         lbQuantum = new JLabel("Quantum:");
 

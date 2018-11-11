@@ -9,6 +9,7 @@ public class Processo {
     private int    prioridade;
     private int    tempoEntrada  = 0;
     private int    tempoEmEspera = 0;
+    private int    quantidadeMemoria = 0;
 
     /**
      * Cria uma instancia de processo com base nos parâmetros
@@ -40,12 +41,21 @@ public class Processo {
      *            Momento em que o processo entra no sistema
      */
     public Processo(String nome, int tempoExecucao, int prioridade,
-                    int tempoEntrada) {
+                    int tempoEntrada, int quantidadeMemoria) {
         this(nome, tempoExecucao, prioridade);
         this.tempoEntrada = tempoEntrada;
+        this.quantidadeMemoria = quantidadeMemoria;
     }
 
-    /**
+    public int getQuantidadeMemoria() {
+		return quantidadeMemoria;
+	}
+
+	public void setQuantidadeMemoria(int quantidadeMemoria) {
+		this.quantidadeMemoria = quantidadeMemoria;
+	}
+
+	/**
      * Decrementa o tempo de execução dentro do processo
      * 
      * @return Tempo restante depois do decremento
